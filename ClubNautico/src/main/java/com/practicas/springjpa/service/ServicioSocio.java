@@ -44,4 +44,5 @@ public class ServicioSocio implements Servicio<Socio>{
 		repo.deleteById(id);
 		return repo.findById(id).isEmpty();
 	}
+	
 }

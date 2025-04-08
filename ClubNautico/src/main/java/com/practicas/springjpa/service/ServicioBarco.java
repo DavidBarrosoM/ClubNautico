@@ -6,13 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.practicas.springjpa.model.Barco;
+import com.practicas.springjpa.model.Salida;
 import com.practicas.springjpa.repositories.RepositorioBarco;
+import com.practicas.springjpa.repositories.RepositorioSocio;
 
 @Service
 public class ServicioBarco implements Servicio<Barco>{
 	@Autowired
 	RepositorioBarco repo;
-
+	@Autowired
+	RepositorioSocio repo2;
 	@Override
 	public Barco create(Barco entity) {
 		repo.save(entity);
@@ -43,5 +46,7 @@ public class ServicioBarco implements Servicio<Barco>{
 		repo.deleteById(id);
 		return repo.findById(id).isEmpty();
 	}
-	
+	public void agregarSalida(Salida s) {
+		
+	}
 }

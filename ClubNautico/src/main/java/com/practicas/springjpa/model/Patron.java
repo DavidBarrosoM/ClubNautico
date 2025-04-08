@@ -44,6 +44,11 @@ public class Patron {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	@Override
+	public String toString() {
+		return "Patron [idPatron=" + idPatron + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
+				+ "]";
+	}
 	
 	
 }

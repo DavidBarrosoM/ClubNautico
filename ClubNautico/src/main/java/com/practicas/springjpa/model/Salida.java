@@ -26,12 +26,12 @@ public class Salida {
 	
 	@OneToOne
 	@JoinColumn(name="id_patron")
-	@Column(name = "patron")
+	//@Column(name = "patron")
 	private Patron patron;
 	
 	@ManyToOne
-	@JoinColumn(name="id_barco")
-	@Column(name = "barco")
+	//@JoinColumn(name="id_barco")
+	//@Column(name = "barco")
 	private Barco barco;
 
 	public Long getIdSalida() {
@@ -72,6 +72,12 @@ public class Salida {
 
 	public void setBarco(Barco barco) {
 		this.barco = barco;
+	}
+
+	@Override
+	public String toString() {
+		return "Salida [idSalida=" + idSalida + ", fecha_hora_salida=" + fecha_hora_salida + ", destino=" + destino
+				+ ", patron=" + patron.toString() + ", barco=" + barco.getNombre() + "]";
 	}
 	
 	
