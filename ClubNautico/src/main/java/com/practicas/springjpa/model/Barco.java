@@ -104,7 +104,6 @@ public class Barco {
 
     @Override
     public String toString() {
-        //String idSocio = (socio != null && socio.getIdSocio() != null) ? socio.getIdSocio().toString() : "";
         return "Barco [idBarco=" + idBarco + ", matricula=" + matricula + ", nombre=" + nombre + ", amarre=" + amarre
                 + ", cuota=" + cuota + ", propietario=" + socio.getNombre() + ", salidas=(" + arraySalidasToString()+ ")]"; // , salidas=" + salidas.toString()+ "
     }

@@ -36,7 +36,6 @@ public class Socio{
     @OneToMany(mappedBy = "socio",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Barco> barcosPropiedad;
 
-    // Getters y setters
 
     public Long getIdSocio() {
         return idSocio;
