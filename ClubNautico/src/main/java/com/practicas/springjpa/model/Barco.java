@@ -34,7 +34,7 @@ public class Barco {
     private Double cuota;
 
     @ManyToOne
-    @JoinColumn(name = "socio_id")  
+    @JoinColumn(name = "id_socio")  
     private Socio socio;
 
     @OneToMany(mappedBy = "barco", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -49,7 +49,7 @@ public class Barco {
         return socio;
     }
 
-    public void setSocio(Socio socio) {  // Cambié el nombre del método para que coincida con el campo
+    public void setSocio(Socio socio) { 
         this.socio = socio;
     }
 
@@ -103,8 +103,8 @@ public class Barco {
 
     @Override
     public String toString() {
-        String idSocio = (socio != null && socio.getIdSocio() != null) ? socio.getIdSocio().toString() : "";
+        //String idSocio = (socio != null && socio.getIdSocio() != null) ? socio.getIdSocio().toString() : "";
         return "Barco [idBarco=" + idBarco + ", matricula=" + matricula + ", nombre=" + nombre + ", amarre=" + amarre
-                + ", cuota=" + cuota + ", propietario=" + idSocio + ", salidas=" + "]"; // + salidas.toString()
+                + ", cuota=" + cuota + ", propietario=" + socio.toString() + "]"; //  + salidas.toString(), salidas=" + "
     }
 }

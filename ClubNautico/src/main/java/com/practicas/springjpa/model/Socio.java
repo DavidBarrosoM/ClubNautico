@@ -84,6 +84,6 @@ public class Socio implements Serializable{
     @Override
     public String toString() {
         return "Socio [idSocio=" + idSocio + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
-                + ", barcosPropiedad=" + barcosPropiedad + "]";
+                + "]";//, barcosPropiedad=" + barcosPropiedad + "
     }
 }
