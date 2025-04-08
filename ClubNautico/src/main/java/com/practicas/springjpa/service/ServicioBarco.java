@@ -43,7 +43,8 @@ public class ServicioBarco implements Servicio<Barco>{
 
 	@Override
 	public boolean delete(Long id) {
-		repo.deleteById(id);
+		Barco b = repo.findById(id).get();
+		repo.deletePorId(id);
 		return repo.findById(id).isEmpty();
 	}
 	public void agregarSalida(Salida s) {
