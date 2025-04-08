@@ -45,4 +45,7 @@ public class ServicioSocio implements Servicio<Socio>{
 		return repo.findById(id).isEmpty();
 	}
 	
+	public Socio findByNombre(String nombre) {
+		return repo.findByNombre(nombre).get();
+	}
 }
