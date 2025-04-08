@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.transaction.Transactional;
 
 @Entity
 @Table(name="salida")
@@ -25,12 +26,13 @@ public class Salida {
 	private String destino;
 	
 	@OneToOne
-	@JoinColumn(name="id_patron")
+	//@JoinColumn(name="id_patron")
+	@JoinColumn(name = "patron_id", referencedColumnName = "id_patron")
 	//@Column(name = "patron")
 	private Patron patron;
 	
 	@ManyToOne
-	//@JoinColumn(name="id_barco")
+	@JoinColumn(name="id_barco")
 	//@Column(name = "barco")
 	private Barco barco;
 
@@ -65,7 +67,7 @@ public class Salida {
 	public void setPatron(Patron patron) {
 		this.patron = patron;
 	}
-
+	@Transactional
 	public Barco getBarco() {
 		return barco;
 	}

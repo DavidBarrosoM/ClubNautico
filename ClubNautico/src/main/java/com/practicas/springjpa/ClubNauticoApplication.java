@@ -23,34 +23,15 @@ public class ClubNauticoApplication {
 		SpringApplication.run(ClubNauticoApplication.class, args);
 	}
 	
-	/*
-	@Bean
-	CommandLineRunner init(ServicioBarco servicio) {
-		return args ->{
-			//ServicioPatron servicioPatron;
-			
-			//ServicioBarco sevicioBarco;
-			//servicio.readAll().forEach(t -> System.out.println(t.getNombre()) );
-			servicio.readAll().forEach(t -> t.toString() );
-			//System.out.println(servicio.readAll());
-			//servicioBarco.getAll();
-		};
-	}
-	*/
+	
 	
 	@Bean
-    CommandLineRunner init(ServicioBarco servicio,ServicioSocio servicio2, DataSource dataSource) {
+    CommandLineRunner init(ServicioBarco servicio,ServicioSocio servicio2, ServicioSalida servicio3,DataSource dataSource) {
         return args -> {
-            // Ejecutar el archivo import.sql después de que la aplicación se haya iniciado
-            /*try (Connection connection = dataSource.getConnection()) {
-                ScriptUtils.executeSqlScript(connection, new ClassPathResource("import.sql"));
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }*/
-
-            // Lógica adicional después de cargar los datos
+            
             servicio.readAll().forEach(t -> System.out.println(t.toString()));
             servicio2.readAll().forEach(s->System.out.println(s.toString()));
+            servicio3.readAll().forEach(s->System.out.println(s.toString()));
         };
     }
 }

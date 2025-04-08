@@ -8,6 +8,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,7 +18,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="socio")
-public class Socio implements Serializable{
+public class Socio{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_socio")
@@ -32,7 +33,7 @@ public class Socio implements Serializable{
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "socio",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Barco> barcosPropiedad;
 
     // Getters y setters
@@ -84,6 +85,13 @@ public class Socio implements Serializable{
     @Override
     public String toString() {
         return "Socio [idSocio=" + idSocio + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
-                + "]";//, barcosPropiedad=" + barcosPropiedad + "
+                + ", barcosPropiedad= ( " + getNombresBarcosLista() + " )]";//, barcosPropiedad=" + barcosPropiedad + "
+    }
+    public String getNombresBarcosLista() {
+    	StringBuilder concatenatedNombres = new StringBuilder();
+        for (Barco barco : barcosPropiedad) {
+        	concatenatedNombres.append(barco.getNombre()).append(", ");
+        }
+    	return concatenatedNombres.toString();
     }
 }

@@ -1,2 +1,7 @@
 INSERT INTO socio (nombre,apellidos,email) VALUES ('Pepito','Fernandez','pepito@example.com')
 INSERT INTO barco (matricula,nombre,amarre,cuota,id_socio) VALUES ('BO100','Enterprise',1,250.95,1)
+INSERT INTO barco (matricula,nombre,amarre,cuota,id_socio) VALUES ('BO101','El intrepido',2,250.95,1)
+INSERT INTO patron (nombre,apellidos,email) VALUES ('Pepito','Fernandez','pepito@example.com')
+INSERT INTO patron (nombre,apellidos,email) VALUES ('Pepito2','Fernandez','pepito2@example.com')
+INSERT INTO salida (fecha_hora_salida,destino,patron_id,id_barco) VALUES ('2025-04-08 15:07:00','Valencia port',1,2)
+INSERT INTO salida (fecha_hora_salida,destino,patron_id,id_barco) VALUES ('2025-04-08 17:07:00','Barcelona',2,2)
