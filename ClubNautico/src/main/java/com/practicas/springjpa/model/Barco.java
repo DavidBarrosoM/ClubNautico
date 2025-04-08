@@ -1,12 +1,20 @@
 package com.practicas.springjpa.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="barco")
 public class Barco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +29,27 @@ public class Barco {
 	@Column(name = "cuota")
 	private Double cuota;
 	
+	@ManyToOne
+	@JoinColumn(name="id_socio")
+	@Column(name = "propietario")
+	private Socio propietario;
 	
+	@OneToMany(mappedBy="barco",cascade=CascadeType.ALL, orphanRemoval = true)
+	@Column(name = "salidas")
+	private List<Salida> salidas;
+	
+	public Socio getPropietario() {
+		return propietario;
+	}
+	public void setPropietario(Socio propietario) {
+		this.propietario = propietario;
+	}
+	public List<Salida> getSalidas() {
+		return salidas;
+	}
+	public void setSalidas(List<Salida> salidas) {
+		this.salidas = salidas;
+	}
 	public Long getIdBarco() {
 		return idBarco;
 	}
