@@ -10,15 +10,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 
 import com.practicas.springjpa.service.*;
 import com.practicas.springjpa.model.*;
-
+@ComponentScan(basePackages = "com.practicas.springjpa")
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "com.practicas.springjpa.repositories")
+//@EnableJpaRepositories(basePackages = "com.practicas.springjpa.repositories")
 public class ClubNauticoApplication {
 
 	public static void main(String[] args) {
@@ -26,10 +27,11 @@ public class ClubNauticoApplication {
 	}
 	
 	
-	
+	/*
 	@Bean
     CommandLineRunner init(ServicioBarco servicio,ServicioSocio servicio2, ServicioSalida servicio3,ServicioPatron servicio4,DataSource dataSource) {
         return args -> {
+        	
         	Socio socio = new Socio();
         	socio.setNombre("David");
         	socio.setApellidos("Barroso");
@@ -58,4 +60,5 @@ public class ClubNauticoApplication {
             servicio4.readAll().forEach(t -> System.out.println(t.toString()));
         };
     }
+    */
 }

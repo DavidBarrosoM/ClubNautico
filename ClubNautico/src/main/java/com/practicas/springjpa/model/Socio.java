@@ -50,7 +50,18 @@ public class Socio{
     private List<Barco> barcosPropiedad;
 
 
-    public Long getIdSocio() {
+    public Socio() {}
+
+	public Socio(@NotNull @Size(min = 2, max = 14) @NotBlank(message = "El nombre es obligatorio") String nombre,
+			@NotNull @Size(min = 2, max = 14) @NotBlank(message = "Los apellidos son obligatorios") String apellidos,
+			@Size(min = 10, max = 100) @Email(message = "El email debe ser válido") @NotBlank(message = "El email es obligatorio") String email) {
+		super();
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.email = email;
+	}
+
+	public Long getIdSocio() {
         return idSocio;
     }
 
@@ -106,4 +117,9 @@ public class Socio{
         }
     	return concatenatedNombres.toString();
     }
+
+	public Socio orElse(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
