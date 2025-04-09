@@ -13,6 +13,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="barco")
@@ -23,15 +27,25 @@ public class Barco {
     private Long idBarco;
 
     @Column(name = "matricula")
+    @NotNull
+    @Size(min = 2, max = 14)
+    @NotBlank(message = "La matricula es obligatoria")
     private String matricula;
 
     @Column(name = "nombre")
+    @NotNull
+    @Size(min = 2, max = 14)
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
 
     @Column(name = "amarre")
+    @Min(1)
+    @NotBlank(message = "El amarre es obligatorio")
     private Integer amarre;
 
     @Column(name = "cuota")
+    @Min(1)
+    @NotBlank(message = "La cuota es obligatoria")
     private Double cuota;
 
     @ManyToOne

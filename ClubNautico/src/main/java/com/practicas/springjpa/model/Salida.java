@@ -13,6 +13,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="salida")
@@ -20,6 +21,7 @@ public class Salida {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_salida")
+	@NotNull
 	private Long idSalida;
 	@Column(name = "fecha_hora_salida")
 	private Date fecha_hora_salida;

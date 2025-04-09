@@ -9,6 +9,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="patron")
@@ -18,10 +22,19 @@ public class Patron {
 	@Column(name = "id_patron")
 	private Long idPatron;
 	@Column(name = "nombre")
+	@NotNull
+    @Size(min = 2, max = 14)
+    @NotBlank(message = "El nombre es obligatorio")
 	private String nombre;
 	@Column(name = "apellidos")
+	@NotNull
+    @Size(min = 2, max = 14)
+    @NotBlank(message = "Los apellidos son obligatorios")
 	private String apellidos;
 	@Column(name = "email")
+	@Size(min = 10, max = 100)
+    @Email(message = "El email debe ser válido")
+    @NotBlank(message = "El email es obligatorio")
 	private String email;
 	
 	@OneToOne
