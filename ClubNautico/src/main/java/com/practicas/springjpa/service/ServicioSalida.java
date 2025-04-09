@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.practicas.springjpa.model.Patron;
 import com.practicas.springjpa.model.Salida;
 import com.practicas.springjpa.repositories.RepositorioSalida;
 
@@ -12,7 +13,8 @@ import com.practicas.springjpa.repositories.RepositorioSalida;
 public class ServicioSalida implements Servicio<Salida>{
 	@Autowired
 	RepositorioSalida repo;
-
+	@Autowired
+	ServicioPatron servicioPatron;
 	@Override
 	public Salida create(Salida entity) {
 		repo.save(entity);
@@ -44,8 +46,11 @@ public class ServicioSalida implements Servicio<Salida>{
 		return repo.findById(id).isEmpty();
 	}
 	public boolean deleteSalidasPorBarco(Long idBarco) {
+		/*List<Patron> patrones = repo.findPatronByBarco(idBarco);
+		patrones.forEach(patron->servicioPatron.delete(patron.getIdPatron()));
+		*/
 		repo.deleteByBarco(idBarco);
-		
+		//int result = repo.deletePorId(id);
 		return repo.findByBarco(idBarco).isEmpty();
 	}
 }

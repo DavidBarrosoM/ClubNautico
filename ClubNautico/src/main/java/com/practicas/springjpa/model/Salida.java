@@ -26,7 +26,7 @@ public class Salida {
 	@Column(name = "destino")
 	private String destino;
 	
-	@OneToOne(cascade = CascadeType.ALL)//, orphanRemoval = true
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)//, orphanRemoval = true
 	@JoinColumn(name = "patron_id", referencedColumnName = "id_patron")
 	private Patron patron;
 	

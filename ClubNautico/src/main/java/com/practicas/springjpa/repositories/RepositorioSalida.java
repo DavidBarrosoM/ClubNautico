@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.practicas.springjpa.model.Patron;
 import com.practicas.springjpa.model.Salida;
 
 @Repository
@@ -18,6 +19,10 @@ public interface RepositorioSalida extends JpaRepository<Salida, Long>{
 	void deleteByBarco(Long idBarco);
 	@Modifying //(clearAutomatically = true, flushAutomatically = true)
     @Transactional
-	 @Query("SELECT s.destino FROM Salida s WHERE s.barco.id = ?1")
-	List<String> findByBarco(Long idBarco);
+	 @Query("SELECT s.id FROM Salida s WHERE s.barco.id = ?1")
+	List<Long> findByBarco(Long idBarco);
+	@Modifying //(clearAutomatically = true, flushAutomatically = true)
+    @Transactional
+	 @Query("SELECT s.patron FROM Salida s WHERE s.barco.id = ?1")
+	List<Patron> findPatronByBarco(Long idBarco);
 }

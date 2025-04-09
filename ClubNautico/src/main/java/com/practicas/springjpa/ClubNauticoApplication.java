@@ -28,7 +28,7 @@ public class ClubNauticoApplication {
 	
 	
 	@Bean
-    CommandLineRunner init(ServicioBarco servicio,ServicioSocio servicio2, ServicioSalida servicio3,DataSource dataSource) {
+    CommandLineRunner init(ServicioBarco servicio,ServicioSocio servicio2, ServicioSalida servicio3,ServicioPatron servicio4,DataSource dataSource) {
         return args -> {
         	Socio socio = new Socio();
         	socio.setNombre("David");
@@ -53,6 +53,9 @@ public class ClubNauticoApplication {
             servicio3.readAll().forEach(s->System.out.println(s.toString()));
             System.out.println("Todos los barcos: ");
             servicio.readAll().forEach(t -> System.out.println(t.toString()));
+            
+            System.out.println("Todos los patrones: ");
+            servicio4.readAll().forEach(t -> System.out.println(t.toString()));
         };
     }
 }

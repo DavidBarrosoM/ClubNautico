@@ -40,7 +40,13 @@ public class ServicioPatron  implements Servicio<Patron> {
 
 	@Override
 	public boolean delete(Long id) {
-		repo.deleteById(id);
-		return repo.findById(id).isEmpty();
+		//repo.deleteById(id);
+		int result =repo.deletePorId(id);
+		return result>0;
+	}
+	public boolean eliminaPorSalida(Long id) {
+		
+		int result = repo.deletePorSalida(id);
+		return result>0;
 	}
 }
