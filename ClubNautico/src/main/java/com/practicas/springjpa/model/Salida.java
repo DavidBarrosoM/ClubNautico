@@ -2,6 +2,7 @@ package com.practicas.springjpa.model;
 
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Salida {
 	@Column(name = "destino")
 	private String destino;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)//, orphanRemoval = true
 	@JoinColumn(name = "patron_id", referencedColumnName = "id_patron")
 	private Patron patron;
 	
@@ -76,7 +77,7 @@ public class Salida {
 	@Override
 	public String toString() {
 		return "Salida [idSalida=" + idSalida + ", fecha_hora_salida=" + fecha_hora_salida + ", destino=" + destino
-				+ ", patron=" + patron.toString() + ", barco=" + barco.getNombre() + "]";
+				+ "]";//, patron=" + patron.toString() + ", barco=" + barco.getNombre() + "
 	}
 	
 	

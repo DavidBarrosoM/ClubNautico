@@ -33,7 +33,7 @@ public class Socio{
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "socio",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "socio",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)//, orphanRemoval = true
     private List<Barco> barcosPropiedad;
 
 
@@ -84,7 +84,7 @@ public class Socio{
     @Override
     public String toString() {
         return "Socio [idSocio=" + idSocio + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
-                + ", barcosPropiedad= ( " + getNombresBarcosLista() + " )]";//, barcosPropiedad=" + barcosPropiedad + "
+                + "]";//, barcosPropiedad= ( " + getNombresBarcosLista() + " )
     }
     public String getNombresBarcosLista() {
     	StringBuilder concatenatedNombres = new StringBuilder();

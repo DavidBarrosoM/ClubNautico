@@ -13,5 +13,5 @@ public interface RepositorioBarco extends JpaRepository<Barco, Long>{
 	@Modifying
     @Transactional
 	 @Query("DELETE FROM Barco b WHERE b.id = ?1")
-	 public void deletePorId(Long id);
+	 int deletePorId(Long id);
 }

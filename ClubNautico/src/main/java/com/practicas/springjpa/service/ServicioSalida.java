@@ -43,4 +43,9 @@ public class ServicioSalida implements Servicio<Salida>{
 		repo.deleteById(id);
 		return repo.findById(id).isEmpty();
 	}
+	public boolean deleteSalidasPorBarco(Long idBarco) {
+		repo.deleteByBarco(idBarco);
+		
+		return repo.findByBarco(idBarco).isEmpty();
+	}
 }

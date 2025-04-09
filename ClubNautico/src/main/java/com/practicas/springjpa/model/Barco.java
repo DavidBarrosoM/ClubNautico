@@ -38,7 +38,7 @@ public class Barco {
     @JoinColumn(name = "id_socio")  
     private Socio socio;
 
-    @OneToMany(mappedBy = "barco",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "barco", cascade = CascadeType.ALL, orphanRemoval = true)//, orphanRemoval = true,fetch = FetchType.EAGER
     private List<Salida> salidas;
 
 
@@ -105,7 +105,7 @@ public class Barco {
     @Override
     public String toString() {
         return "Barco [idBarco=" + idBarco + ", matricula=" + matricula + ", nombre=" + nombre + ", amarre=" + amarre
-                + ", cuota=" + cuota + ", propietario=" + socio.getNombre() + ", salidas=(" + arraySalidasToString()+ ")]"; // , salidas=" + salidas.toString()+ "
+                + ", cuota=" + cuota + "]"; // , propietario=" + socio.getNombre() + ", salidas=(" + arraySalidasToString()+ ")
     }
     public String arraySalidasToString() {
     	StringBuilder concatenatedDestinos = new StringBuilder();

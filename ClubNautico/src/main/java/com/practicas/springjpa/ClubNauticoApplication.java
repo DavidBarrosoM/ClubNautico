@@ -34,7 +34,9 @@ public class ClubNauticoApplication {
         	socio.setNombre("David");
         	socio.setApellidos("Barroso");
         	socio.setEmail("david@example.com");
+        	
             servicio2.create(socio);
+            /*
         	System.out.println("Todos los barcos: ");
             servicio.readAll().forEach(t -> System.out.println(t.toString()));
             System.out.println("Todos los socios: ");
@@ -42,10 +44,15 @@ public class ClubNauticoApplication {
             System.out.println("Todos las salidas: ");
             servicio3.readAll().forEach(s->System.out.println(s.toString()));
             System.out.println("Barco con id = 1 : \n"+servicio.findById(1L).toString());
-            
+            */
             System.out.println("Borrar el barco: "+servicio.delete(2L));
-            servicio.findById(2L);
-            System.out.println("Existe el barco: "+ servicio.findById(2L).toString());
+            //servicio.findById(2L);
+            //System.out.println("Existe el barco: "+ servicio.findById(2L).toString());
+            
+            System.out.println("Todos las salidas: ");
+            servicio3.readAll().forEach(s->System.out.println(s.toString()));
+            System.out.println("Todos los barcos: ");
+            servicio.readAll().forEach(t -> System.out.println(t.toString()));
         };
     }
 }
