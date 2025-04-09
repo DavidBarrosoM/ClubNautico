@@ -27,25 +27,23 @@ public class Barco {
     private Long idBarco;
 
     @Column(name = "matricula")
-    @NotNull
     @Size(min = 2, max = 14)
     @NotBlank(message = "La matricula es obligatoria")
     private String matricula;
 
     @Column(name = "nombre")
-    @NotNull
     @Size(min = 2, max = 14)
     @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
 
     @Column(name = "amarre")
     @Min(1)
-    @NotBlank(message = "El amarre es obligatorio")
+    @NotNull(message = "El amarre es obligatorio")
     private Integer amarre;
 
     @Column(name = "cuota")
     @Min(1)
-    @NotBlank(message = "La cuota es obligatoria")
+    @NotNull(message = "La cuota es obligatoria")
     private Double cuota;
 
     @ManyToOne
@@ -56,7 +54,34 @@ public class Barco {
     private List<Salida> salidas;
 
 
-    public boolean agregarSalida(Salida s) {
+    public Barco(@NotNull @Size(min = 2, max = 14) @NotBlank(message = "La matricula es obligatoria") String matricula,
+			@NotNull @Size(min = 2, max = 14) @NotBlank(message = "El nombre es obligatorio") String nombre,
+			@Min(1) @NotBlank(message = "El amarre es obligatorio") Integer amarre,
+			@Min(1) @NotBlank(message = "La cuota es obligatoria") Double cuota) {
+		super();
+		this.matricula = matricula;
+		this.nombre = nombre;
+		this.amarre = amarre;
+		this.cuota = cuota;
+	}
+
+	public Barco() {
+		super();
+	}
+
+	public Barco(@NotNull @Size(min = 2, max = 14) @NotBlank(message = "La matricula es obligatoria") String matricula,
+			@NotNull @Size(min = 2, max = 14) @NotBlank(message = "El nombre es obligatorio") String nombre,
+			@Min(1) @NotBlank(message = "El amarre es obligatorio") Integer amarre,
+			@Min(1) @NotBlank(message = "La cuota es obligatoria") Double cuota, Socio socio) {
+		super();
+		this.matricula = matricula;
+		this.nombre = nombre;
+		this.amarre = amarre;
+		this.cuota = cuota;
+		this.socio = socio;
+	}
+
+	public boolean agregarSalida(Salida s) {
         return this.salidas.add(s);
     }
 

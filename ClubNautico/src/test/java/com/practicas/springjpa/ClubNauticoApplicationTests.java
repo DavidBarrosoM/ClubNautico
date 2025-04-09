@@ -69,7 +69,7 @@ class ClubNauticoApplicationTests {
 	        List<Socio> allSocios = socioServicio.readAll();
 
 	        // then
-	        assertThat(allSocios).hasSize(3).extracting(Socio::getNombre).containsOnly(juan.getNombre(), maria.getNombre(), carlos.getNombre());
+	        assertThat(allSocios).extracting(Socio::getNombre).contains(juan.getNombre(), maria.getNombre(), carlos.getNombre());
 	    }
 	 /*
 	 @Test

@@ -1,6 +1,7 @@
 package com.practicas.springjpa.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,17 @@ public class ServicioSocio implements Servicio<Socio>{
 	}
 
 	@Override
-	public Socio findById(Long id) {
-		return repo.findById(id).get();
+	public Optional<Socio> findById(Long id) {
+
+		//Optional<Socio> socio = repo.findById(id);
+		if (repo.findById(id).isPresent()) {
+			return repo.findById(id);
+		} else {
+		
+			return Optional.empty();
+		}
+
+		//return  Optional.ofNullable(repo.findById(id).get());
 	}
 
 	@Override

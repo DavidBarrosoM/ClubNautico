@@ -2,6 +2,7 @@ package com.practicas.springjpa.service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,11 +34,16 @@ public class ServicioBarco implements Servicio<Barco>{
 	}
 
 	@Override
-	public Barco findById(Long id) {
+	public Optional<Barco> findById(Long id) {
+		if (repo.findById(id).isPresent()) {
+			return repo.findById(id);
+		} else {
 		
+			return Optional.empty();
+		}
 		//return repo.findById(id).get();
-		return repo.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("No se encontró el barco con id: " + id));
+		//return Optional.ofNullable(repo.findById(id).get());
+                //.orElseThrow(() -> new NoSuchElementException("No se encontró el barco con id: " + id)).get();
 	}
 
 	@Override
@@ -61,5 +67,8 @@ public class ServicioBarco implements Servicio<Barco>{
 	}
 	public void agregarSalida(Salida s) {
 		
+	}
+	public List<Barco> buscaPorNombre(String nombre) {
+		return repo.findByNombre(nombre);
 	}
 }

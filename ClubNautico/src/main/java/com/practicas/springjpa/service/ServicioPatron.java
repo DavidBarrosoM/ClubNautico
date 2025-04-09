@@ -1,6 +1,7 @@
 package com.practicas.springjpa.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,14 @@ public class ServicioPatron  implements Servicio<Patron> {
 	}
 
 	@Override
-	public Patron findById(Long id) {
-		return repo.findById(id).get();
+	public Optional<Patron> findById(Long id) {
+		if (repo.findById(id).isPresent()) {
+			return repo.findById(id);
+		} else {
+		
+			return Optional.empty();
+		}
+		//return  Optional.ofNullable(repo.findById(id).get());
 	}
 
 	@Override

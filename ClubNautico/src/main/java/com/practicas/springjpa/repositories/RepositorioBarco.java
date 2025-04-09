@@ -1,5 +1,7 @@
 package com.practicas.springjpa.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +16,8 @@ public interface RepositorioBarco extends JpaRepository<Barco, Long>{
     @Transactional
 	 @Query("DELETE FROM Barco b WHERE b.id = ?1")
 	 int deletePorId(Long id);
+
+	List<Barco> findByNombre(String nombre);
+
+	//Barco merge(Barco entity);
 }
