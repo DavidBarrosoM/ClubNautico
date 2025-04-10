@@ -13,11 +13,9 @@ import com.practicas.springjpa.repositories.RepositorioPatron;
 public class ServicioPatron  implements Servicio<Patron> {
 	@Autowired
 	RepositorioPatron repo;
-
 	@Override
 	public Patron create(Patron entity) {
-		repo.save(entity);
-		return entity;
+		return repo.save(entity);
 	}
 
 	@Override
@@ -48,12 +46,17 @@ public class ServicioPatron  implements Servicio<Patron> {
 	@Override
 	public boolean delete(Long id) {
 		//repo.deleteById(id);
-		int result =repo.deletePorId(id);
-		return result>0;
+		//Patron p = repo.findById(id).get();
+		//servicioSalida.delete(p.getSalida().getIdSalida());
+		//int result =repo.deleteById(id);
+		repo.deleteById(id);
+		
+		return !repo.existsById(id);
 	}
 	public boolean eliminaPorSalida(Long id) {
 		
 		int result = repo.deletePorSalida(id);
 		return result>0;
 	}
+	
 }

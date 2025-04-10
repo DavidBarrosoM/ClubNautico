@@ -37,7 +37,13 @@ public class Patron {
     @NotBlank(message = "El email es obligatorio")
 	private String email;
 	
-	@OneToOne
+	public Salida getSalida() {
+		return salida;
+	}
+	public void setSalida(Salida salida) {
+		this.salida = salida;
+	}
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_salida")
 	private Salida salida;
 	

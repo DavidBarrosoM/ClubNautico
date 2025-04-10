@@ -21,7 +21,6 @@ public class Salida {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_salida")
-	@NotNull
 	private Long idSalida;
 	@Column(name = "fecha_hora_salida")
 	private Date fecha_hora_salida;

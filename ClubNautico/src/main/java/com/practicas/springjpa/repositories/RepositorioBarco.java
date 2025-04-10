@@ -18,6 +18,9 @@ public interface RepositorioBarco extends JpaRepository<Barco, Long>{
 	 int deletePorId(Long id);
 
 	List<Barco> findByNombre(String nombre);
-
+	@Modifying
+    @Transactional
+	 @Query("SELECT b FROM Barco b WHERE b.socio.id = ?1")
+	List<Barco> findByidSocio(Long idSocio);
 	//Barco merge(Barco entity);
 }

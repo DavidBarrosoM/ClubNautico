@@ -18,8 +18,8 @@ public class ServicioSalida implements Servicio<Salida>{
 	ServicioPatron servicioPatron;
 	@Override
 	public Salida create(Salida entity) {
-		repo.save(entity);
-		return entity;
+		
+		return repo.save(entity);
 	}
 
 	@Override
@@ -59,5 +59,8 @@ public class ServicioSalida implements Servicio<Salida>{
 		repo.deleteByBarco(idBarco);
 		//int result = repo.deletePorId(id);
 		return repo.findByBarco(idBarco).isEmpty();
+	}
+	public void deletePorPatron(Long id) {
+		repo.deletePorPatron(id);
 	}
 }

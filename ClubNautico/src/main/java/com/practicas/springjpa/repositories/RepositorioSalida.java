@@ -19,6 +19,10 @@ public interface RepositorioSalida extends JpaRepository<Salida, Long>{
 	void deleteByBarco(Long idBarco);
 	@Modifying //(clearAutomatically = true, flushAutomatically = true)
     @Transactional
+	 @Query("DELETE FROM Salida s WHERE s.patron.id = ?1")
+	int deletePorPatron(Long idPatron);
+	@Modifying //(clearAutomatically = true, flushAutomatically = true)
+    @Transactional
 	 @Query("SELECT s.id FROM Salida s WHERE s.barco.id = ?1")
 	List<Long> findByBarco(Long idBarco);
 	@Modifying //(clearAutomatically = true, flushAutomatically = true)

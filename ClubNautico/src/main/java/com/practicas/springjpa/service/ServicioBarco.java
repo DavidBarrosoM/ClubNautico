@@ -71,4 +71,14 @@ public class ServicioBarco implements Servicio<Barco>{
 	public List<Barco> buscaPorNombre(String nombre) {
 		return repo.findByNombre(nombre);
 	}
+	
+	public void borraTodosBarcosSocio(Long idSocio) {
+		//boolean resultado = false;
+		List<Barco> listaBarcos = buscaBarcosSocio(idSocio);
+		listaBarcos.forEach(barco->delete(barco.getIdBarco()));
+		//return resultado;
+	}
+	public List<Barco> buscaBarcosSocio(Long idSocio){
+		return repo.findByidSocio(idSocio);
+	}
 }

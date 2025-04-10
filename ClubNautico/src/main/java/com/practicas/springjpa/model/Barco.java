@@ -144,13 +144,7 @@ public class Barco {
     @Override
     public String toString() {
         return "Barco [idBarco=" + idBarco + ", matricula=" + matricula + ", nombre=" + nombre + ", amarre=" + amarre
-                + ", cuota=" + cuota + "]"; // , propietario=" + socio.getNombre() + ", salidas=(" + arraySalidasToString()+ ")
+                + ", cuota=" + cuota + "]"; 
     }
-    public String arraySalidasToString() {
-    	StringBuilder concatenatedDestinos = new StringBuilder();
-        for (Salida salida : salidas) {
-            concatenatedDestinos.append(salida.getDestino()).append(", ");
-        }
-    	return concatenatedDestinos.toString();
-    }
+    
 }
