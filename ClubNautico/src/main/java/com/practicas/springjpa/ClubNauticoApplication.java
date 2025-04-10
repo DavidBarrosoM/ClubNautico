@@ -27,7 +27,7 @@ public class ClubNauticoApplication {
 	}
 	
 	
-	/*
+	
 	@Bean
     CommandLineRunner init(ServicioBarco servicio,ServicioSocio servicio2, ServicioSalida servicio3,ServicioPatron servicio4,DataSource dataSource) {
         return args -> {
@@ -60,5 +60,5 @@ public class ClubNauticoApplication {
             servicio4.readAll().forEach(t -> System.out.println(t.toString()));
         };
     }
-    */
+    
 }
